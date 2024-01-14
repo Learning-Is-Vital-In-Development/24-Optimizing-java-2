@@ -24,9 +24,9 @@ java HelloWorld 라는 명령을 실행하면
 - Java 8 이전 : `${JAVA_HOME}/jre/lib/rt.jar` 및 기타 핵심 라이브러리와 같은 JDK의 내부 클래스를 로드한다.
 - Java 9 이후 : `/re.jar`이 존재하지 않으며, `/lib` 내에 모듈화되어 포함됐다. 이제는 정확하게 ClassLoader 내 최상위 클래스들만 로드한다.
 
-2. Extension ClassLoader(Platform Loader)
+2. Extension ClassLoader(Platform ClassLoader)
 - 부트스트랩 클래스 로더를 부모로 갖는 클래스 로더로서, 확장 자바 클래스들을 로드한다.
-- `java.ext.dirs` 환경 변수에 설정된 디렉토리의 클래스 파일을 로드하고, 이 값이 설정되어 있지 않은 경우 `${JAVA_HOME}/jre/lib/ext` 에 있는 클래스 파일을 로드한다.
+- Java 8 이전 : `java.ext.dirs` 환경 변수에 설정된 디렉토리의 클래스 파일을 로드하고, 이 값이 설정되어 있지 않은 경우 `${JAVA_HOME}/jre/lib/ext` 에 있는 클래스 파일을 로드한다.
 - OS나 플랫폼에 native code 를 제공하고 기본 환경을 overriding 하는데 사용된다.
 
 3. Application ClassLoader(System ClassLoader)
@@ -40,7 +40,8 @@ ClassLoader는 모두 상속 관계이다.
 `클래스 = 패키지명을 포함한 full class name + 자신을 로드한 classloader` 두가지 정보로 식별하여 이중 로딩 방지한다.
 
 [Understanding the Java Class Loader Starting from Java 9](https://sergiomartinrubio.com/articles/understanding-the-java-class-loader-starting-from-java-9/) <br>
-[Java9 Class ClassLoader](https://docs.oracle.com/javase%2F9%2Fdocs%2Fapi%2F%2F/java/lang/ClassLoader.html)
+[New Class Loader Implementations](https://docs.oracle.com/javase/9/migrate/toc.htm#JSMIG-GUID-A868D0B9-026F-4D46-B979-901834343F9E)
+
 
 
 ### 바이트코드 실행 (Executing Bytecode)
@@ -101,6 +102,8 @@ hotspot은 runtime 에 동작을 분석하고, 성능에 가장 유리한 방향
 CPU 를 추상화 한 구조이기 때문에 다른 platform 에서 class 파일을 문제 없이 실행할 수 있지만, 성능을 최대로 내려면 native 기능을 활용해 CPU 에서 직접 실행시켜야 한다.<br>
 hotspot 은 자주 실행되는 코드 파트를 찾아내 JIT 컴파일을 수행한다.(interpreted bytecode -> native code)
 
+`SourceCode(.java) → Compiler(javac) → ByteCode(.class) → JVM → Interpreter → NativeCode`
+
 > **JVM의 실행 엔진의 인터프리터** <br>
 > 바로 기계어로 변환하는 컴파일러의 경우는 프로그램이 작성된 기계상에서 매우 효율적으로 실행된다. 그러나 이와 동시에 기계에 종속된다는 말이기도 하다.<br>
 > 만약 JVM 내에서 컴파일러를 사용하여 바이트코드의 목적 파일을 생성한다면 이는 기계에 종속되는 파일이다.<br>
@@ -112,6 +115,8 @@ hotspot 은 자주 실행되는 코드 파트를 찾아내 JIT 컴파일을 수�
 > 기계어로 변환된 코드는 캐시에 저장되기 때문에 재사용 시 컴파일을 다시 할 필요가 없다.
 
 [[Java] JIT 컴파일러란?](https://hyeinisfree.tistory.com/26)
+
+![image](https://github.com/rachel5004/24-optimizing-java-2/assets/75432228/63d0171c-3bac-4c4d-8b6b-65c9889c4162)
 
 
 ### JVM 메모리 관리 (JVM Memory Management)
