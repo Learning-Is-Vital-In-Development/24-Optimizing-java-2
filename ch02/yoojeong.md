@@ -68,7 +68,7 @@ bytecode 는 컴퓨터의 아키텍쳐에 특정되지 않는 중간 표현형(I
 class HelloWorld {
     public static void main(String[] args) {
         System.out.println("Hello World!");
-				System.out.println(3+4);
+				
     }
 }
 
