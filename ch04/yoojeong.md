@@ -19,8 +19,8 @@
 
 
 
-용량계획 테스트(Endurance Test)
-저하 테스트(Endurance Test)
+- 용량계획 테스트(Capacity Planning Test) : 리소스를 업그레이드하면 어느정도 성능이 늘어나는가?
+- 저하 테스트(Degradation Test) : 시스템이 부분적으로 실패할 경우 어떤 일이 벌어지나?(잘 복원되나?)
 
 
 #### 주요 측정 항목
