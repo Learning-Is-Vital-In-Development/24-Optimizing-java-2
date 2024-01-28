@@ -11,7 +11,7 @@
  
   | Week | Chapter                            | 발표자 | 발표자료 | 
   |------|:-----------------------------------|-----|------|
-  | 1    | Ch2. JVM 이야기 <br> Ch3. 하드웨어와 운영체제  |     |      |
+  | 1    | Ch2. JVM 이야기 <br> Ch3. 하드웨어와 운영체제  |이유진|[Ch2. JVM 이야기](https://github.com/Learning-Is-Vital-In-Development/24-optimizing-java-2/blob/main/ch02/youjin.md) <br> [Ch3. 하드웨어와 운영체제](https://github.com/Learning-Is-Vital-In-Development/24-optimizing-java-2/blob/main/ch03/youjin.md)|
   | 2    | Ch4. 성능 테스트 패턴 및 안티패턴              |     |      |
   | 3    | Ch5. 마이크로벤치마킹과 통계                  |     |      |
   | 4    | Ch6. 가비지 수집 기초 <br> Ch7. 가비지 수집 고급 |     |      |
